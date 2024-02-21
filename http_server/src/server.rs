@@ -26,7 +26,7 @@ impl Server {
                 Ok((mut stream, _)) => {
                     let mut buffer = [0; 1024];
                     match stream.read(&mut buffer) {
-                        // on another terminal run  echo "TEST" | netcat 127.0.0.1 8080 to test receiving a request
+                        // on another terminal (macOS) run  echo "TEST" | netcat 127.0.0.1 8080 to test receiving a request
                         Ok(_) => {
                             println!("Received a request: {}", String::from_utf8_lossy(&buffer));
                             match Request::try_from(&buffer[..]) {
